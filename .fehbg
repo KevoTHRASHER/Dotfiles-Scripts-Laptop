@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/home/akira/Imágenes/Backgrounds/MyGirl.jpg' 
+feh --no-fehbg --bg-fill '/home/akira/Imágenes/Backgrounds/evangelion1.jpg' 
