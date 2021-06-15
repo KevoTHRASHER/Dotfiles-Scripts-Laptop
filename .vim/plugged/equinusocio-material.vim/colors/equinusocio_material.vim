@@ -88,8 +88,8 @@ call s:HL('FoldColumn', s:colors.foreground, s:colors.none, s:colors.none)
 " ----------------------------------------------------
 call s:HL('SignColumn', s:colors.none, s:colors.none, s:colors.none)
 call s:HL('IncSearch', s:colors.black, s:colors.magenta, s:colors.none)
-call s:HL('LineNr', s:colors.black_br, s:colors.none, s:colors.none)
-call s:HL('CursorLineNr', s:colors.foreground, s:colors.none, s:colors.none)
+""call s:HL('LineNr', s:colors.black_br, s:colors.none, s:colors.none)
+""call s:HL('CursorLineNr', s:colors.foreground, s:colors.none, s:colors.none)
 call s:HL('MatchParen', s:colors.black, s:colors.red, s:colors.none)
 " ----------------------------------------------------
 call s:HL('ModeMsg', s:colors.foreground, s:colors.none, s:colors.none)
