@@ -118,9 +118,9 @@ Plug 'chuling/equinusocio-material.vim'
 
 call plug#end()
 
-" EMMET Plugin ENABLED only with FileType HTML % CSS"
+" EMMET Plugin ENABLED only with FileType HTML, CSS & PHP"
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,php EmmetInstall
 
 " EMMET Plugin MapLeader Key "
 "let g:user_emmet_leader_key=',' "CHANGE EMMET KEY LEADER TO ,

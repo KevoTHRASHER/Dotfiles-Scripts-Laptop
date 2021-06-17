@@ -9,7 +9,7 @@ xrandr --output HDMI3 --primary --mode 1920x1080 --rotate normal --rate 60 --out
 feh --no-fehbg --bg-scale '/home/akira/Imágenes/Backgrounds/MyGirl.jpg' &
 wmname LG3D
 
-#bspc monitor -d LVDS1 I II III IV
+#bspc monitor -d LVDS1 I II III IV V
 bspc monitor -d HDMI3 I II III IV
 
 bspc config border_width			3
@@ -37,9 +37,10 @@ bspc desktop ^1 -l monocle
 bspc desktop ^2 -l monocle
 bspc desktop ^3 -l monocle
 bspc desktop ^4 -l monocle
+#bspc desktop ^5 -l monocle
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
+#bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
