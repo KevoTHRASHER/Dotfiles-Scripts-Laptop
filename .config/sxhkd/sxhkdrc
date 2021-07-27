@@ -125,9 +125,9 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 ####	Keyboard KeyChron Layout	####
-super + ctrl + i
+super + ctrl + @space + i
 	setxkbmap -model pc104 -layout us -variant altgr-intl
-super + ctrl + l
+super + ctrl + 
 	setxkbmap -model pc104 -layout latam
 
 super + p

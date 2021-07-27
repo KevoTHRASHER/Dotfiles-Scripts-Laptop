@@ -42,6 +42,10 @@ set backspace=indent,eol,start
 
 "" HIGHLITHING
 set syntax=css
+set syntax=html
+set syntax=php
+""highlight link htmlTag htmlTagName
+""highlight link htmlEndTag htmlTagName
 
 " Identation TABS "
 filetype plugin indent on
@@ -109,60 +113,109 @@ inoremap /*<CR> /*<CR>*/<Esc>O
 " PLUGINS "
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'          " Set AIRLINE barline
-Plug 'vim-airline/vim-airline-themes'   " Set AIRLINE THEMES to barline
-Plug 'terryma/vim-multiple-cursors'     " Enable MULTIPLE CURSORS
-Plug 'mattn/emmet-vim'                  " EMMET HTML5 & CSS3 Plugin
-Plug 'tpope/vim-surround'               " Vim
-Plug 'chuling/equinusocio-material.vim'
+Plug 'vim-airline/vim-airline'								" Set AIRLINE barline
+Plug 'vim-airline/vim-airline-themes'						" Set AIRLINE THEMES to barline
+Plug 'terryma/vim-multiple-cursors'							" Enable MULTIPLE CURSORS
+Plug 'mattn/emmet-vim'										" EMMET HTML5 & CSS3 Plugin
+Plug 'tpope/vim-surround'									" Vim
+Plug 'chuling/equinusocio-material.vim'						" EQUINUSOCIO-MATERIAL THEME
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }		" MATERIAL THEME
+Plug 'joshdick/onedark.vim'									" ONEDARK THEME
+Plug 'dracula/vim', { 'as': 'dracula' }						" DRACULA THEME
+Plug 'uiiaoo/java-syntax.vim'								" JAVA SYNTAX HIGHLIGHT
 
 call plug#end()
 
-" EMMET Plugin ENABLED only with FileType HTML, CSS & PHP"
+"" EMMET Plugin ENABLED only with FileType HTML, CSS & PHP"
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,php EmmetInstall
 
-" EMMET Plugin MapLeader Key "
-"let g:user_emmet_leader_key=',' "CHANGE EMMET KEY LEADER TO ,
+"" EMMET Plugin MapLeader Key "
+let g:user_emmet_leader_key=',' "CHANGE EMMET KEY LEADER TO ,
 let g:user_emmet_expandabbr_key=',,'
 
-"	*************	MATERIAL THEME	************	"
-set termguicolors
-" use a different style
-" valid values: 'default' (default), 'darker', 'pure'
-let g:equinusocio_material_style = 'pure'
 
-" less bright
-" which means some colors will be modified by this formula:
-" (r, g, b) -> ( max(r - less, 0), max(g - less, 0), max(b - less, 0) )
-let g:equinusocio_material_less = 0
+"""	*************	MATERIAL EQUINUS THEME	************	"
+""set termguicolors
+""" use a different style
+""" valid values: 'default' (default), 'darker', 'pure'
+""let g:equinusocio_material_style = 'pure'
+""
+""" less bright
+""" which means some colors will be modified by this formula:
+""" (r, g, b) -> ( max(r - less, 0), max(g - less, 0), max(b - less, 0) )
+""	let g:equinusocio_material_less = 0
+""
+""" make vertsplit invisible (visible by default) (default 0)
+""" if style == 'pure', then the vertsplit is always visible
+""let g:equinusocio_material_hide_vertsplit = 1
+""
+""" parentheses improved (default 0)
+""" enabling this option with 'luochen1990/rainbow' installed is not encouraged
+""" because this option and 'luochen1990/rainbow' will registry conflicting events
+""" in summary:
+""" 1. no 'luochen1990/rainbow' installed, no parentheses improved: nothing to do (default 0)
+""" 2. no 'luochen1990/rainbow' installed, want built-in parentheses improved: set to 1
+""" 3. 'luochen1990/rainbow' installed: nothing to do (default 0)
+""let g:equinusocio_material_bracket_improved = 1
+""
+""" use a better vertsplit char
+""set fillchars+=vert:│
+""colorscheme equinusocio_material
+""
+""" this theme has a buildin lightline/airline theme
+""let g:airline_theme = 'equinusocio_material'
+""let g:lightline = {
+""  \ 'colorscheme': 'equinusocio_material',
+""  \ }
+""
+""" AIRLINE SETTINGS
+""let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
+""let g:airline_powerline_fonts=1
 
-" make vertsplit invisible (visible by default) (default 0)
-" if style == 'pure', then the vertsplit is always visible
-let g:equinusocio_material_hide_vertsplit = 1
 
-" parentheses improved (default 0)
-" enabling this option with 'luochen1990/rainbow' installed is not encouraged
-" because this option and 'luochen1990/rainbow' will registry conflicting events
-" in summary:
-" 1. no 'luochen1990/rainbow' installed, no parentheses improved: nothing to do (default 0)
-" 2. no 'luochen1990/rainbow' installed, want built-in parentheses improved: set to 1
-" 3. 'luochen1990/rainbow' installed: nothing to do (default 0)
-let g:equinusocio_material_bracket_improved = 1
+""	MATERIAL COLORSCHEME	"
 
-" use a better vertsplit char
-set fillchars+=vert:│
-colorscheme equinusocio_material
+"""" For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
+""if (has('nvim'))
+""  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+""endif
+""
+"""" For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
+""""" Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
+""""" https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
+""if (has('termguicolors'))
+""  set termguicolors
+""endif
+"""" OPCIONES DE TEMA
+""""let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+""let g:material_terminal_italics = 1
+""let g:material_theme_style = 'ocean'
+""let g:airline_theme = 'material'
+""set termguicolors
+""let g:airline_powerline_fonts=1
+""let g:material_less = 0
+""colorscheme material
 
-" this theme has a buildin lightline/airline theme
-let g:airline_theme = 'equinusocio_material'
 
-let g:lightline = {
-  \ 'colorscheme': 'equinusocio_material',
-  \ }
+""		THEME ONEDARK
+""colorscheme onedark
+""let g:material_less = 0
+""let g:airline_theme='onedark'
+""let g:onedark_enable_italic = 1
+""let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
+""let g:airline_powerline_fonts=1
 
-" AIRLINE SETTINGS
+""		THEME DRACULA
+colorscheme dracula
+let g:dracula_italic = 1
+let g:dracula_less = 0
+let g:airline_theme='dracula'
+let g:dracula_enable_italic = 1
 let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
 let g:airline_powerline_fonts=1
 
+""hi Normal ctermbg=Black ctermfg=White guifg=White guibg=Black
+""let java_highlight_functions=1
+""let g:java_highlight_all=1
 syntax on
