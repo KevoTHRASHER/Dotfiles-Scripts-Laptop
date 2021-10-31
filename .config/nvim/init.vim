@@ -123,7 +123,9 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }		" MATERIAL THEME
 Plug 'joshdick/onedark.vim'									" ONEDARK THEME
 Plug 'dracula/vim', { 'as': 'dracula' }						" DRACULA THEME
 Plug 'uiiaoo/java-syntax.vim'								" JAVA SYNTAX HIGHLIGHT
-
+Plug 'sainnhe/sonokai'										" SONOKAI THEME
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }		" SPACEDUCK THEME
+Plug 'arzg/vim-colors-xcode'								" Vim-Color-XCODE
 call plug#end()
 
 "" EMMET Plugin ENABLED only with FileType HTML, CSS & PHP"
@@ -135,55 +137,49 @@ let g:user_emmet_leader_key=',' "CHANGE EMMET KEY LEADER TO ,
 let g:user_emmet_expandabbr_key=',,'
 
 
-"""	*************	MATERIAL EQUINUS THEME	************	"
+"""""	*************	MATERIAL EQUINUS THEME	************	"
 ""set termguicolors
-""" use a different style
-""" valid values: 'default' (default), 'darker', 'pure'
+""""use a different style
+""""valid values: 'default' (default), 'darker', 'pure'
 ""let g:equinusocio_material_style = 'pure'
 ""
-""" less bright
-""" which means some colors will be modified by this formula:
-""" (r, g, b) -> ( max(r - less, 0), max(g - less, 0), max(b - less, 0) )
-""	let g:equinusocio_material_less = 0
-""
-""" make vertsplit invisible (visible by default) (default 0)
-""" if style == 'pure', then the vertsplit is always visible
+""""" less bright
+""""" which means some colors will be modified by this formula:
+""""" (r, g, b) -> ( max(r - less, 0), max(g - less, 0), max(b - less, 0) )
+""let g:equinusocio_material_less = 0
+""""
+""""" make vertsplit invisible (visible by default) (default 0)
+""""" if style == 'pure', then the vertsplit is always visible
 ""let g:equinusocio_material_hide_vertsplit = 1
-""
-""" parentheses improved (default 0)
-""" enabling this option with 'luochen1990/rainbow' installed is not encouraged
-""" because this option and 'luochen1990/rainbow' will registry conflicting events
-""" in summary:
-""" 1. no 'luochen1990/rainbow' installed, no parentheses improved: nothing to do (default 0)
-""" 2. no 'luochen1990/rainbow' installed, want built-in parentheses improved: set to 1
-""" 3. 'luochen1990/rainbow' installed: nothing to do (default 0)
+""""
+""""" parentheses improved (default 0)
+""""" enabling this option with 'luochen1990/rainbow' installed is not encouraged
+""""" because this option and 'luochen1990/rainbow' will registry conflicting events
+""""" in summary:
+""""" 1. no 'luochen1990/rainbow' installed, no parentheses improved: nothing to do (default 0)
+""""" 2. no 'luochen1990/rainbow' installed, want built-in parentheses improved: set to 1
+""""" 3. 'luochen1990/rainbow' installed: nothing to do (default 0)
 ""let g:equinusocio_material_bracket_improved = 1
-""
-""" use a better vertsplit char
+""""" use a better vertsplit char
 ""set fillchars+=vert:│
 ""colorscheme equinusocio_material
 ""
-""" this theme has a buildin lightline/airline theme
+""""this theme has a buildin lightline/airline theme
 ""let g:airline_theme = 'equinusocio_material'
-""let g:lightline = {
-""  \ 'colorscheme': 'equinusocio_material',
-""  \ }
-""
-""" AIRLINE SETTINGS
+""""let g:lightline = {
+""""\ 'colorscheme': 'equinusocio_material',
+""""\ }
+""""
+""""" AIRLINE SETTINGS
 ""let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
 ""let g:airline_powerline_fonts=1
-
+""let g:airline#extensions#branch#enabled = 1
+""let g:airline#extensions#tabline#enabled = 1
+""let g:airline#extensions#tagbar#enabled = 1
+""let g:airline#extensions#syntastic#enabled = 1
+""let g:airline_skip_empty_sections = 1
 
 ""	MATERIAL COLORSCHEME	"
-
-"""" For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
-""if (has('nvim'))
-""  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-""endif
-""
-"""" For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
-""""" Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
-""""" https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
 ""if (has('termguicolors'))
 ""  set termguicolors
 ""endif
@@ -194,6 +190,13 @@ let g:user_emmet_expandabbr_key=',,'
 ""let g:airline_theme = 'material'
 ""set termguicolors
 ""let g:airline_powerline_fonts=1
+""let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
+""let g:airline#extensions#branch#enabled = 1
+""let g:airline#extensions#tabline#enabled = 1
+""let g:airline#extensions#tagbar#enabled = 1
+""let g:airline#extensions#syntastic#enabled = 1
+""let g:airline_skip_empty_sections = 1
+
 ""let g:material_less = 0
 ""colorscheme material
 
@@ -207,15 +210,76 @@ let g:user_emmet_expandabbr_key=',,'
 ""let g:airline_powerline_fonts=1
 
 ""		THEME DRACULA
-colorscheme dracula
-let g:dracula_italic = 1
-let g:dracula_less = 0
-let g:airline_theme='dracula'
-let g:dracula_enable_italic = 1
-let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
-let g:airline_powerline_fonts=1
-
+""colorscheme dracula
+""let g:dracula_italic = 1
+""let g:dracula_less = 0
+""let g:airline_theme='dracula'
+""let g:dracula_enable_italic = 1
+""let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
+""let g:airline_powerline_fonts=1
+""let g:airline#extensions#branch#enabled = 1
+""let g:airline#extensions#tabline#enabled = 1
+""let g:airline#extensions#tagbar#enabled = 1
+""let g:airline#extensions#syntastic#enabled = 1
+""let g:airline_skip_empty_sections = 1
 ""hi Normal ctermbg=Black ctermfg=White guifg=White guibg=Black
 ""let java_highlight_functions=1
 ""let g:java_highlight_all=1
+
+""""""		SONOKAI THEME
+""if has('termguicolors')
+""	set termguicolors
+""endif
+"""""" Available values: `'default'`, `'atlantis'`, `'andromeda'`, `'shusia'`, `'maia'`, `'espresso'`
+""let g:sonokai_style = 'andromeda'
+""let g:sonokai_enable_italic = 1
+""let g:sonokai_disable_italic_comment = 1
+""let g:sonokai_cursor = 'auto'
+""let g:sonokai_menu_selection_background = 'auto'
+""let g:sonokai_show_eob = 1
+""let g:sonokai_diagnostic_text_highlight = 1
+""let g:sonokai_diagnostic_line_highlight = 1
+""let g:sonokai_diagnostic_virtual_text = 'colored'
+""let g:sonokai_current_word = 'bold'
+""let g:sonokai_better_performance = 0
+""let g:sonokai_lightline_disable_bold = 1
+""let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
+""let g:airline_powerline_fonts=1
+""let g:airline#extensions#branch#enabled = 1
+""let g:airline#extensions#tabline#enabled = 1
+""let g:airline#extensions#tagbar#enabled = 1
+""let g:airline#extensions#syntastic#enabled = 1
+""let g:airline_skip_empty_sections = 1
+""
+""colorscheme sonokai
+""let g:airline_theme = 'sonokai'
+
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
+colorscheme spaceduck
+
+let g:spaceduck_enable_italic = 1
+let g:spaceduck_disable_italic_comment = 1
+let g:spaceduck_cursor = 'auto'
+let g:spaceduck_menu_selection_background = 'auto'
+let g:spaceduck_show_eob = 1
+let g:spaceduck_diagnostic_text_highlight = 1
+let g:spaceduck_diagnostic_line_highlight = 1
+let g:spaceduck_diagnostic_virtual_text = 'colored'
+let g:spaceduck_current_word = 'bold'
+let g:spaceduck_better_performance = 1
+let g:spaceduck_lightline_disable_bold = 1
+let g:airline_theme = 'spaceduck'
+let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
+let g:airline_powerline_fonts=1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline_skip_empty_sections = 1
+
 syntax on
