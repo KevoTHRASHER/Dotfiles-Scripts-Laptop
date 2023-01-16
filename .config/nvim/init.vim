@@ -4,9 +4,9 @@ set nocompatible
 set magic
 filetype plugin on
 filetype indent on
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
+set encoding=UTF-8
+set fileencoding=UTF-8
+set fileencodings=UTF-8
 set omnifunc=syntaxcomplete#Complete
 
 "	JAVA AUTOCOMPLETE	"
@@ -14,6 +14,12 @@ if has("autocmd")
   autocmd Filetype java setlocal omnifunc=javacomplete#Complete
   autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
 endif
+"	PHP IDENTATIONS TABS"
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+:retab
+
+"	REMOVE WHITESPACES	"
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Graphical Interface "
 set termguicolors
@@ -25,7 +31,8 @@ set relativenumber
 set numberwidth=1
 set cursorline
 "set guicursor=a:blink0 "ENABLE CURSOR BLINK
-set mouse=a
+set mouse=a "Set MOUSE ACTIVE"
+""set mousemodel=popup
 set clipboard+=unnamedplus
 set showcmd
 set showmode
@@ -44,6 +51,8 @@ set backspace=indent,eol,start
 set syntax=css
 set syntax=html
 set syntax=php
+set syntax=python
+""set filetype=python
 ""highlight link htmlTag htmlTagName
 ""highlight link htmlEndTag htmlTagName
 
@@ -56,7 +65,7 @@ set smarttab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab ""noexpandtab
 set shiftround
 ""	RECOMMENT SECTION""
 ""set list listchars=tab:\|-\,nbsp:␣,trail:•
@@ -125,12 +134,13 @@ Plug 'dracula/vim', { 'as': 'dracula' }						" DRACULA THEME
 Plug 'uiiaoo/java-syntax.vim'								" JAVA SYNTAX HIGHLIGHT
 Plug 'sainnhe/sonokai'										" SONOKAI THEME
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }		" SPACEDUCK THEME
-Plug 'arzg/vim-colors-xcode'								" Vim-Color-XCODE
+""Plug 'arzg/vim-colors-xcode'								" Vim-Color-XCODE
+Plug 'ryanoasis/vim-devicons'								" VIM DEVICONS
 call plug#end()
 
 "" EMMET Plugin ENABLED only with FileType HTML, CSS & PHP"
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,php EmmetInstall
+autocmd FileType html,css,php,markdown,python EmmetInstall
 
 "" EMMET Plugin MapLeader Key "
 let g:user_emmet_leader_key=',' "CHANGE EMMET KEY LEADER TO ,
@@ -275,11 +285,18 @@ let g:spaceduck_better_performance = 1
 let g:spaceduck_lightline_disable_bold = 1
 let g:airline_theme = 'spaceduck'
 let g:airline#extensions#tabline#enabled = 1  " Set TABLINE ENABLE in TOP
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+""imap <F5> <ESC>:w<CR>:!python3 %<CR>
+""imap <F5> <CR>:!python3 %<CR>
+autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:!python3 %<CR>
+autocmd Filetype python nnoremap <buffer> <F6> :w<CR>:vert terminal python3 %<CR>
+""autocmd Filetype python nnoremap <buffer> <F6> :w<CR>:vert ter !python %<CR>
+autocmd Filetype java nnoremap <buffer> <F6> :w<CR>:!javac %<CR>
+autocmd Filetype java nnoremap <buffer> <F7> :w<CR>:!java %<CR>
 syntax on
