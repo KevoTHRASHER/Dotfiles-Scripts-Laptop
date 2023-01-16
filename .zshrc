@@ -14,8 +14,12 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 alias ls='ls --color=auto'
-PS1="%F{green}┌──(%f%F{blue}%n@%M%f%F{green})-[%f%F{white}%~%f%F{green}]%f"$'\n'"%F{green}└─%f%F{blue}%#%f "
-RPROMPT='%F{green}%T %W %f'
+alias nv='nvim'
+PS1="%F{green}┌──(%f%F{magenta}%n@%M%f%F{green})-[%f%F{magenta}%~%f%F{green}]%f"$'\n'"%F{green}└─%f%F{magenta}%#%f "
+####			PRIMER CONFIGURACION
+#PS1="%F{green}┌──(%f%F{magenta}%n@%M%f%F{green})-[%f%F{white}%~%f%F{green}]%f"$'\n'"%F{green}└─%f%F{magenta}%#%f "
+RPROMPT='%F{214}%T %W %f'
+#PS1="%F{green}┌──(%f%F{#A877C8}%n@%M%f%F{green})-[%f%F{white}%~%f%F{green}]%f"$'\n'"%F{green}└─%f%F{#A877C8}%#%f "
 #PS1="%F{green}┌──(%f%F{blue}%n@%M%f%F{green})-[%F{white}%1~%f]%f"$'\n'"└─%F{blue}%#%f "
 #PS1='[\u@\h \W]\$ '
 neofetch
