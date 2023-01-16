@@ -1,10 +1,1 @@
-configuration {
-	display-drun: "Activate";
-	display-run: "Execute";
-	display-window: "Window";
-	show-icons: true;
-	icon-theme: "Papirus-Dark";
-}
-
-@import "/usr/share/rofi/themes/android_notification.rasi"
-rofi.theme: /usr/share/rofi/themes/android_notification.rasi
+rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi
